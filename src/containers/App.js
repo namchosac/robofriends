@@ -28,7 +28,10 @@ function App(props) {
     const [count, setCount] = useState(0);
     const { searchfield, onSearchChange, robots, isPending, onRequestRobots } = props;
 
-    useEffect(onRequestRobots, [onRequestRobots]);
+    useEffect(() => {
+        onRequestRobots()
+        // eslint-disable-next-line
+    }, []);
 
     const filteredRobots = robots.filter((robot) => {
         return robot.name.toLowerCase().includes(searchfield)
